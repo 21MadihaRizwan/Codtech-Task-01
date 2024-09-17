@@ -1,0 +1,80 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+// Function prototypes
+void convertFromCelsius(double temp);
+void convertFromFahrenheit(double temp);
+void convertFromKelvin(double temp);
+
+int main() {
+    int choice;
+    double temp;
+
+    // Display menu
+    cout << "Temperature Converter" << endl;
+    cout << "1. Convert from Celsius" << endl;
+    cout << "2. Convert from Fahrenheit" << endl;
+    cout << "3. Convert from Kelvin" << endl;
+    cout << "Enter your choice (1-3): ";
+    cin >> choice;
+
+    // Check for invalid input
+    if (choice < 1 || choice > 3) {
+        cout << "Invalid choice." << endl;
+        return 1;
+    }
+
+    // Get the temperature from the user
+    cout << "Enter the temperature: ";
+    cin >> temp;
+
+    // Convert based on the user's choice
+    switch (choice) {
+        case 1:
+            convertFromCelsius(temp);
+            break;
+        case 2:
+            convertFromFahrenheit(temp);
+            break;
+        case 3:
+            convertFromKelvin(temp);
+            break;
+    }
+
+    return 0;
+}
+
+// Convert temperature from Celsius
+void convertFromCelsius(double temp) {
+    double fahrenheit = (temp * 9.0 / 5.0) + 32.0;
+    double kelvin = temp + 273.15;
+
+    cout << fixed << setprecision(2);
+    cout << "Celsius: " << temp << " °C" << endl;
+    cout << "Fahrenheit: " << fahrenheit << " °F" << endl;
+    cout << "Kelvin: " << kelvin << " K" << endl;
+}
+
+// Convert temperature from Fahrenheit
+void convertFromFahrenheit(double temp) {
+    double celsius = (temp - 32.0) * 5.0 / 9.0;
+    double kelvin = celsius + 273.15;
+
+    cout << fixed << setprecision(2);
+    cout << "Fahrenheit: " << temp << " °F" << endl;
+    cout << "Celsius: " << celsius << " °C" << endl;
+    cout << "Kelvin: " << kelvin << " K" << endl;
+}
+
+// Convert temperature from Kelvin
+void convertFromKelvin(double temp) {
+    double celsius = temp - 273.15;
+    double fahrenheit = (celsius * 9.0 / 5.0) + 32.0;
+
+    cout << fixed << setprecision(2);
+    cout << "Kelvin: " << temp << " K" << endl;
+    cout << "Celsius: " << celsius << " °C" << endl;
+    cout << "Fahrenheit: " << fahrenheit << " °F" << endl;
+}
